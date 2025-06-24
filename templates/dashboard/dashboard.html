@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Dashboard</h1>
+<canvas id="statusChart"></canvas>
+<script>
+const data = {
+  labels: {{ stats.values_list('status', flat=True)|list }},
+  datasets: [{label: 'Requests by status', data: {{ stats.values_list('count', flat=True)|list }} }]
+};
+new Chart(document.getElementById('statusChart'), {type:'bar', data});
+</script>
+<p><a href="{% url 'services_list' %}">Manage Services</a> | <a href="{% url 'requests_list' %}">View Requests</a></p>
+{% endblock %}

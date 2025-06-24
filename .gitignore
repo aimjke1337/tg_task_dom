@@ -25,6 +25,9 @@ venv/
 # Logs
 *.log
 
+# Collected static
+staticfiles/
+
 # Migrations
 **/migrations/*
 !**/migrations/__init__.py

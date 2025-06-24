@@ -1,8 +1,8 @@
 from django import forms
-from .models import ServiceRequest
+from .models import Request
 
 
 class ServiceRequestForm(forms.ModelForm):
     class Meta:
-        model = ServiceRequest
-        fields = ["service", "full_name", "address", "phone", "extra_data"]
+        model = Request
+        fields = ["service", "client", "data", "status"]
