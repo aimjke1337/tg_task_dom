@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Statistics</h1>
+    <canvas id="statusChart"></canvas>
+    <script>
+        const data = {
+            labels: [{% for item in stats %}'{{ item.status }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'Requests',
+                data: [{% for item in stats %}{{ item.total }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: 'rgba(75,192,192,0.4)'
+            }]
+        };
+        new Chart(document.getElementById('statusChart'), {type: 'bar', data: data});
+    </script>
+</body>
+</html>
