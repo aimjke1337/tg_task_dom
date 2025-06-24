@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Services</h2>
+<p><a href="{% url 'service_add' %}">Add Service</a></p>
+<ul>
+{% for s in object_list %}
+  <li>{{ s.name }} — {{ s.price }} ₽ — <a href="{% url 'service_edit' s.id %}">Edit</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
